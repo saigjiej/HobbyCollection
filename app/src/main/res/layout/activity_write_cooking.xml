@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WritePostActivity"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="60dp"
+        android:text="강좌명"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:textSize="20dp">
+    </TextView>
+
+
+    <EditText
+        android:id="@+id/title_edt"
+        android:layout_width="300dp"
+        android:layout_height="72dp"
+        android:layout_marginLeft="55dp"
+        android:ems="10"
+        android:hint="강좌명을 입력해주세요"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="60dp"
+        android:text="가격"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:textSize="20dp">
+    </TextView>
+
+    <EditText
+        android:id="@+id/contents_edt"
+        android:layout_width="300dp"
+        android:layout_height="72dp"
+        android:layout_marginLeft="55dp"
+        android:ems="10"
+        android:hint="가격을 입력해주세요"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/check_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="업로드"
+        android:textColor="#000000">
+    </Button>
+
+</LinearLayout>
