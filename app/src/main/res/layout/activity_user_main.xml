@@ -89,7 +89,7 @@
         app:layout_constraintTop_toTopOf="@+id/app_toolbar" />
 
     <Button
-        android:id="@+id/cooking"
+        android:id="@+id/user"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginLeft="30dp"
@@ -124,8 +124,7 @@
         android:layout_marginTop="600dp"
         android:text="버튼"
         app:layout_constraintStart_toStartOf="@+id/app_toolbar"
-        app:layout_constraintTop_toTopOf="@+id/app_toolbar">
-    </Button>
+        app:layout_constraintTop_toTopOf="@+id/app_toolbar"></Button>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

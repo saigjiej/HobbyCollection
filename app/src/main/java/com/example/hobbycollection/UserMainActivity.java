@@ -11,9 +11,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
 public class UserMainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
@@ -47,6 +44,12 @@ public class UserMainActivity extends AppCompatActivity {
         //요리 수강 리스트 버튼
         findViewById(R.id.cooking).setOnClickListener(onClickListener);
 
+        //미술 수강 리스트 버튼
+        findViewById(R.id.art).setOnClickListener(onClickListener);
+
+        //공예 수강 리스트 버튼
+        findViewById(R.id.crafts).setOnClickListener(onClickListener);
+
 
     }
 
@@ -65,7 +68,16 @@ public class UserMainActivity extends AppCompatActivity {
                     // 요리 수강 리스트 Activity으로 이동
                     startCookingActivity();
                     break;
-
+                case R.id.art:
+                    Log.e("클릭", "미술");
+                    // 미술 수강 리스트 Activity으로 이동
+                    startArtActivity();
+                    break;
+                case R.id.crafts:
+                    Log.e("클릭", "공예");
+                    // 미술 수강 리스트 Activity으로 이동
+                    startCraftsActivity();
+                    break;
 
 
             }
@@ -86,15 +98,17 @@ public class UserMainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-
-
-
-    private void startLoginActivity() {
-        Intent intent = new Intent(this, LoginAcitvity.class);
+    // 미술 수강 리스트 Activity
+    private void startArtActivity() {
+        Intent intent = new Intent(this, ArtActivity.class);
         startActivity(intent);
     }
 
+    // 공예 수강 리스트 Activity
+    private void startCraftsActivity() {
+        Intent intent = new Intent(this, CraftsActivity.class);
+        startActivity(intent);
+    }
 
 
     // 옵션 메뉴 구현
