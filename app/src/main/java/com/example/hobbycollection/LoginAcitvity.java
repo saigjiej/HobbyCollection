@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 
 // 로그인 Activity
-public class UserLoginAcitvity extends AppCompatActivity {
+public class LoginAcitvity extends AppCompatActivity {
     private static final String TAG = "UserLoginAcitvity";
     // 파이어베이스 등록
     // FirebaseAuth의 인스턴스를 선언
@@ -28,7 +28,7 @@ public class UserLoginAcitvity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_login);
+        setContentView(R.layout.activity_login);
 
         // 하나의 인스턴스만 가지고 사용
         // onCreate() 메서드에서 FirebaseAuth 인스턴스를 초기화
@@ -80,26 +80,26 @@ public class UserLoginAcitvity extends AppCompatActivity {
         // 이메일과 패스워드가 적혀있을 경우
         if (email.length() > 0 && password.length() > 0) {
             mAuth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(UserLoginAcitvity.this, new OnCompleteListener<AuthResult>() {
+                    .addOnCompleteListener(LoginAcitvity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             // 성공 시
                             if (task.isSuccessful()) {
                                 FirebaseUser user = mAuth.getCurrentUser();
-                                Toast.makeText(UserLoginAcitvity.this, "Salt Shaker에 오신 것을 환영합니다!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(LoginAcitvity.this, "Salt Shaker에 오신 것을 환영합니다!", Toast.LENGTH_LONG).show();
                                 // 회원 activity로 이동
                                 startMainActivity();
 
                             } else {   // 실패 시
                                 if (task.getException() != null) {
-                                    Toast.makeText(UserLoginAcitvity.this, "로그인을 다시 시도해주세요", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(LoginAcitvity.this, "로그인을 다시 시도해주세요", Toast.LENGTH_LONG).show();
                                 }
                             }
                         }
                     });
 
         } else {    // 이메일과 비밀번호를 입력하지 않았을 경우
-            Toast.makeText(UserLoginAcitvity.this, "이메일 또는 비밀번호를 입력해주세요", Toast.LENGTH_LONG).show();
+            Toast.makeText(LoginAcitvity.this, "이메일 또는 비밀번호를 입력해주세요", Toast.LENGTH_LONG).show();
         }
     }
 

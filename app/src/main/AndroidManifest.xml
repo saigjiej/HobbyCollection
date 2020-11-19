@@ -11,23 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WritePostActivity"></activity>
+        <activity android:name=".CookingActivity" />
+        <activity android:name=".PayActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".ManagerSelectActivity" />
-        <activity android:name=".ManagerLoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".SelectActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ContactActivity" />
         <activity android:name=".LogoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".UserLoginAcitvity">
+        <activity android:name=".LoginAcitvity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -44,13 +31,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".UserMainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".MemberinitActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

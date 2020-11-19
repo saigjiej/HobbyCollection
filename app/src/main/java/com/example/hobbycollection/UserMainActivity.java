@@ -7,7 +7,12 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class UserMainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -34,6 +39,60 @@ public class UserMainActivity extends AppCompatActivity {
         //툴바 배경색
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#000000")));
 
+
+        // 회원 정보 입력 버튼
+        findViewById(R.id.button).setOnClickListener(onClickListener);
+
+
+        //요리 수강 리스트 버튼
+        findViewById(R.id.cooking).setOnClickListener(onClickListener);
+
+
+    }
+
+    View.OnClickListener onClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                // 버튼 클릭 시
+                case R.id.button:
+                    Log.e("클릭", "정보 입력");
+                    // 정보 입력 Activity으로 이동
+                    startActivity();
+                    break;
+                case R.id.cooking:
+                    Log.e("클릭", "요리");
+                    // 요리 수강 리스트 Activity으로 이동
+                    startCookingActivity();
+                    break;
+
+
+
+            }
+        }
+    };
+
+
+
+    // 회원 정보 입력 Activity
+    private void startActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    // 요리 수강 리스트 Activity
+    private void startCookingActivity() {
+        Intent intent = new Intent(this, CookingActivity.class);
+        startActivity(intent);
+    }
+
+
+
+
+
+    private void startLoginActivity() {
+        Intent intent = new Intent(this, LoginAcitvity.class);
+        startActivity(intent);
     }
 
 
@@ -43,7 +102,7 @@ public class UserMainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case android.R.id.home:{
-                startActivity(new Intent(this, UserLoginAcitvity.class));
+                startActivity(new Intent(this, LoginAcitvity.class));
             }
         }
         return super.onOptionsItemSelected(item);

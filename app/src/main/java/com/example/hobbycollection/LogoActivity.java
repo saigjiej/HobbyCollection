@@ -21,7 +21,7 @@ public class LogoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // 선택 액티비티로 이동
-                startSelectActivity();
+                startLoginActivity();
             }
         });
 
@@ -29,8 +29,8 @@ public class LogoActivity extends AppCompatActivity {
     }
 
     // 선택 액티비티 이동
-    private void startSelectActivity(){
-        Intent intent = new Intent(this, SelectActivity.class);
+    private void startLoginActivity(){
+        Intent intent = new Intent(this, LoginAcitvity.class);
         // 앱이 꺼짐
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);

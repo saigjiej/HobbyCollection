@@ -1,114 +1,72 @@
 package com.example.hobbycollection;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.ArrayList;
-
-// 관리자 요리 추가 페이지
+// 연락처 Activity로부터 가져온 데이터 표시
 public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "UserActivity";
+    // 연락처 Activity(ContactActivity)를 실행하기에 앞서,
+    // Activity 실행 요청을 식별하기 위한 요청 코드(requestCode)를 정의합니다.
+    static final int REQ_ADD_CONTACT = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cooking_add);
+        setContentView(R.layout.activity_main);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        //MainActivity에서 "Add Contact" 버튼 클릭 시, 연락처 Activity(ContactActivity)를 실행
+        Button buttonAddContact = (Button) findViewById(R.id.buttonAddContact);
+        buttonAddContact.setOnClickListener(new View.OnClickListener(){
 
-        if (user == null) { // 로그인이 되어있지 않을 경우
-            myStartActivity(ManagerLoginActivity.class); // 로그인 화면으로 이동
-        } else { // 로그인이 되어있을 때 (회원가입 or 로그인)
-            // 데이터가 없을 때만 나오도록 설정
-            FirebaseFirestore  db = FirebaseFirestore.getInstance();
-            final DocumentReference docRef = db.collection("users").document(user.getUid()); // user.getUid()로 사용자 찾기
-            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document != null) { // 이름이 비어있지 않다면
-                            if (document.exists()) {
-                                Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                            } else {
-                                Log.d(TAG, "No such document");
-                                myStartActivity(MemberinitActivity.class); // 없으면 이름 입력 창으로 이동
-                            }
-                        }
-                    } else { // 성공하지 못했다면
-                        Log.d(TAG, "get failed with ", task.getException());
-                    }
-                }
-            });
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ContactActivity.class);
+                startActivityForResult(intent, REQ_ADD_CONTACT);
+            }
+        });
 
-
-            // 로그인 됐을 때 recyclerView 초기화
-            final ArrayList<PostInfo> postList = new ArrayList<>();
-            db.collection("posts")
-                    .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if(task.isSuccessful()) {
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    Log.d(TAG, document.getId() + " => " + document.getData());
-                                    postList.add(new PostInfo(
-                                            document.getData().get("title").toString(),
-                                            document.getData().get("contents").toString(),
-                                            document.getData().get("publisher").toString(),
-                                            document.getId()));
-                                }
-                                RecyclerView recyclerView = findViewById(R.id.recyclerView);
-                                recyclerView.setHasFixedSize(true);
-                                recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-
-                                RecyclerView.Adapter mAdapter = new MainAdapter(MainActivity.this, postList);
-                                recyclerView.setAdapter(mAdapter);
-                            } else {
-                                Log.d(TAG, "Error getting documents : ", task.getException());
-                            }
-                        }
-                    });
-
-
-        }
-
-        findViewById(R.id.addButton).setOnClickListener(onClickListener); // 추억 작성 페이지 이동 버튼
     }
 
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        if (requestCode == REQ_ADD_CONTACT) {
+            if (resultCode == RESULT_OK) {
 
-    View.OnClickListener onClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            switch (view.getId()){
-                case R.id.addButton: // 추억 작성 추가 버튼 클릭 시
-                    myStartActivity(WritePostActivity.class); // 추억 작성 페이지로 이동
-                    break;
+                // No 값을 int 타입에서 String 타입으로 변환하여 표시.
+                TextView textViewNo = (TextView) findViewById(R.id.textViewNo);
+                int no = intent.getIntExtra("contact_no", 0);
+                textViewNo.setText(Integer.toString(no));
+
+                // Name 값을 String 타입 그대로 표시.
+                TextView textViewName = (TextView) findViewById(R.id.textViewName);
+                String name = intent.getStringExtra("contact_name");
+                if (name != null)
+                    textViewName.setText(name);
+
+
+                // Phone 값을 String 타입 그대로 표시.
+                TextView textViewPhone = (TextView) findViewById(R.id.textViewPhone);
+                String phone = intent.getStringExtra("contact_phone");
+                if (phone != null)
+                    textViewName.setText(phone);
+
+                TextView textViewOver20 = (TextView) findViewById(R.id.textViewOver20);
+                boolean over20 = intent.getBooleanExtra("contact_over20", false);
+                if (over20)
+                    textViewOver20.setText("Over 20");
+                else
+                    textViewOver20.setText("Not over 20");
+
+
             }
         }
-    };
-
-    private void myStartActivity(Class c){
-        Intent intent = new Intent(this, c);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // 앱이 꺼짐
-        startActivity(intent);
     }
+
 }
