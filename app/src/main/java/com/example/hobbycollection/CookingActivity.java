@@ -6,6 +6,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,6 +40,7 @@ public class CookingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cooking);
 
 
+
         //Toolbar를 액티비티의 App Bar로 지정
         setSupportActionBar((Toolbar) findViewById(R.id.app_toolbar));
         //Toolbar td = (Toolbar) findViewById(R.id.app_toolbar));
@@ -54,8 +57,6 @@ public class CookingActivity extends AppCompatActivity {
 
         //툴바 배경색
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#000000")));
-
-
 
 
 
@@ -90,9 +91,17 @@ public class CookingActivity extends AppCompatActivity {
         adapter= new CustomAdapter(arrayList, this);
         recyclerView.setAdapter(adapter); // 리사이클러뷰에 어뎁터 연결
 
+
+
+
     }
 
 
+    private void myStartActivity(Class c){
+        Intent intent = new Intent(this, c);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // 앱이 꺼짐
+        startActivity(intent);
+    }
 
 
 

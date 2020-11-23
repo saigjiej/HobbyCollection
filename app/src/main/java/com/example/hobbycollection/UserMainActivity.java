@@ -3,6 +3,7 @@ package com.example.hobbycollection;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -25,8 +26,6 @@ public class UserMainActivity extends AppCompatActivity {
 
         //Toolbar를 액티비티의 App Bar로 지정
         setSupportActionBar((Toolbar) findViewById(R.id.app_toolbar));
-        //Toolbar td = (Toolbar) findViewById(R.id.app_toolbar));
-        //setSupportActionBar(tb);
 
         //툴바 타이틀 지우기
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -51,6 +50,8 @@ public class UserMainActivity extends AppCompatActivity {
 
         //공예 수강 리스트 버튼
         findViewById(R.id.crafts).setOnClickListener(onClickListener);
+
+        
 
 
     }
@@ -78,6 +79,7 @@ public class UserMainActivity extends AppCompatActivity {
                     Log.e("클릭", "회원정보");
                     // 회원정보 Activity으로 이동
                     startProfileActivity();
+
             }
         }
     };
@@ -107,6 +109,7 @@ public class UserMainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
     }
+
 
 
 
