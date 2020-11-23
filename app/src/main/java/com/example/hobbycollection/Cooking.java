@@ -3,7 +3,7 @@ package com.example.hobbycollection;
 public class Cooking {
     private String profile;
     private String id;
-    private int pw;
+    private String pw;
     private String userName;
 
     public Cooking() {}
@@ -24,11 +24,11 @@ public class Cooking {
         this.id = id;
     }
 
-    public int getPw() {
+    public String getPw() {
         return pw;
     }
 
-    public void setPw(int pw) {
+    public void setPw(String pw) {
         this.pw = pw;
     }
 

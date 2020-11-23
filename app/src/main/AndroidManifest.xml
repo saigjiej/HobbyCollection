@@ -11,12 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CraftsActivity"/>
+        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".CraftsActivity" />
         <activity android:name=".ArtActivity" />
         <activity android:name=".CookingActivity" />
         <activity android:name=".PayActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".ContactActivity" />
         <activity android:name=".LogoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

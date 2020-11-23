@@ -33,6 +33,10 @@ public class LoginAcitvity extends AppCompatActivity {
         // 하나의 인스턴스만 가지고 사용
         // onCreate() 메서드에서 FirebaseAuth 인스턴스를 초기화
         mAuth = FirebaseAuth.getInstance();
+        if(mAuth.getCurrentUser() != null) {
+            finish();
+            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+        }
 
         // 로그인 버튼
         findViewById(R.id.login_btn).setOnClickListener(onClickListener);

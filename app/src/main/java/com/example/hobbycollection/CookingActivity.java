@@ -1,10 +1,15 @@
 package com.example.hobbycollection;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,6 +18,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.auth.User;
 
 import java.util.ArrayList;
 
@@ -30,6 +36,28 @@ public class CookingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cooking);
+
+
+        //Toolbar를 액티비티의 App Bar로 지정
+        setSupportActionBar((Toolbar) findViewById(R.id.app_toolbar));
+        //Toolbar td = (Toolbar) findViewById(R.id.app_toolbar));
+        //setSupportActionBar(tb);
+
+        //툴바 타이틀 지우기
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        // 뒤로가기 버튼, 디폴트로 true만 해도 백버튼이 생김
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //뒤로가기 버튼 설정(drawable에 이미지를 등록해서 화살표 대신 사용가능, 사이즈가 충분히 작아야 함)
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.icon_back);
+
+        //툴바 배경색
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#000000")));
+
+
+
+
 
         recyclerView = findViewById(R.id.recycierView); // 아이디 연결
         recyclerView.setHasFixedSize(true); // 리사이클러뷰 기존성능 강화
@@ -62,5 +90,20 @@ public class CookingActivity extends AppCompatActivity {
         adapter= new CustomAdapter(arrayList, this);
         recyclerView.setAdapter(adapter); // 리사이클러뷰에 어뎁터 연결
 
+    }
+
+
+
+
+
+    // 옵션 메뉴 구현
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case android.R.id.home:{
+                startActivity(new Intent(this, UserMainActivity.class));
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

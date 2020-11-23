@@ -11,6 +11,10 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
+
 public class UserMainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
@@ -36,10 +40,8 @@ public class UserMainActivity extends AppCompatActivity {
         //툴바 배경색
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#000000")));
 
-
-        // 회원 정보 입력 버튼
-        findViewById(R.id.button).setOnClickListener(onClickListener);
-
+        // 회원 정보 입력
+        findViewById(R.id.user).setOnClickListener(onClickListener);
 
         //요리 수강 리스트 버튼
         findViewById(R.id.cooking).setOnClickListener(onClickListener);
@@ -57,12 +59,6 @@ public class UserMainActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-                // 버튼 클릭 시
-                case R.id.button:
-                    Log.e("클릭", "정보 입력");
-                    // 정보 입력 Activity으로 이동
-                    startActivity();
-                    break;
                 case R.id.cooking:
                     Log.e("클릭", "요리");
                     // 요리 수강 리스트 Activity으로 이동
@@ -75,22 +71,18 @@ public class UserMainActivity extends AppCompatActivity {
                     break;
                 case R.id.crafts:
                     Log.e("클릭", "공예");
-                    // 미술 수강 리스트 Activity으로 이동
+                    // 공예 수강 리스트 Activity으로 이동
                     startCraftsActivity();
                     break;
-
-
+                case R.id.user:
+                    Log.e("클릭", "회원정보");
+                    // 회원정보 Activity으로 이동
+                    startProfileActivity();
             }
         }
     };
 
 
-
-    // 회원 정보 입력 Activity
-    private void startActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
 
     // 요리 수강 리스트 Activity
     private void startCookingActivity() {
@@ -109,6 +101,14 @@ public class UserMainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CraftsActivity.class);
         startActivity(intent);
     }
+
+    // 로그인 Activity
+    private void startProfileActivity() {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+    }
+
+
 
 
     // 옵션 메뉴 구현
