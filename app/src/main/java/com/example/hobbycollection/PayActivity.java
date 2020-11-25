@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -107,7 +108,8 @@ public class PayActivity extends AppCompatActivity  {
             user = FirebaseAuth.getInstance().getCurrentUser();
             AddInfo addInfo = new AddInfo(order, name, phoneNumber, number, user.getUid());
             uploader(addInfo);
-            startToast("정보가 입력되었습니다.");
+            startToast("예약되었습니다! 감사합니다:)");
+            myStartActivity(UserMainActivity.class);
 
         } else {
             startToast("회원정보를 입력해주세요.");
@@ -130,6 +132,13 @@ public class PayActivity extends AppCompatActivity  {
                         Log.d(TAG, "Error adding document", e);
                     }
                 });
+    }
+
+
+    private void myStartActivity(Class c){
+        Intent intent = new Intent(this, c);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // 앱이 꺼짐
+        startActivity(intent);
     }
 
 

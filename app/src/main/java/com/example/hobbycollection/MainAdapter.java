@@ -79,12 +79,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
         titleTextView.setText(mDataset.get(position).getTitle());
         contentsTextView.setText(mDataset.get(position).getContents());
 
-
-
-
-
-
-
     }
 
     @Override
@@ -99,13 +93,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
             public boolean onMenuItemClick(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.delete:
-
                         firebaseFirestore.collection("review").document(mDataset.get(position).getId())
                                 .delete()
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) { // 게시물 삭제 성공
-                                        Toast.makeText(activity, "게시물을 삭제하였습니다!", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(activity, "게시물을 삭제하였습니다! 다시 들어와주세요:)", Toast.LENGTH_SHORT).show();
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {
