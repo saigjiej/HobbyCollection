@@ -1,57 +1,33 @@
 package com.example.hobbycollection;
 
 public class PostInfo {
-    private String order;
-    private String name;
-    private String phoneNumber;
-    private String number;
+    private String title;
+    private String contents;
     private String publisher;
+    private String id;
 
-    public PostInfo(String order, String name, String phoneNumber, String number, String publisher) {
-        this.order = order;
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.number = number;
+    public PostInfo(String title, String contents, String publisher, String id){
+        this.title = title;
+        this.contents = contents;
         this.publisher = publisher;
+        this.id = id;
     }
 
-    public String getOrder() {
-        return this.order;
+    public String getTitle() { return this.title; }
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setOrder(String order) {
-        this.order = order;
+    public String getContents() { return this.contents; }
+    public void setContents(String contents) {
+        this.contents = contents;
     }
 
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPhoneNumber() {
-        return this.phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getNumber() {
-        return this.number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public String getPublisher() {
-        return this.publisher;
-    }
-
+    public String getPublisher() { return this.publisher; }
     public void setPublisher(String publisher) {
         this.publisher = publisher;
     }
+
+    public String getId() { return this.id; }
+    public void setId(String id) { this.id = id; }
 }

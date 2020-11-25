@@ -3,7 +3,6 @@ package com.example.hobbycollection;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -12,12 +11,9 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserInfo;
 
 public class UserMainActivity extends AppCompatActivity {
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "UserMainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +47,11 @@ public class UserMainActivity extends AppCompatActivity {
         //공예 수강 리스트 버튼
         findViewById(R.id.crafts).setOnClickListener(onClickListener);
 
-        
+        //리뷰 버튼
+        findViewById(R.id.review).setOnClickListener(onClickListener);
+
+
+
 
 
     }
@@ -79,6 +79,12 @@ public class UserMainActivity extends AppCompatActivity {
                     Log.e("클릭", "회원정보");
                     // 회원정보 Activity으로 이동
                     startProfileActivity();
+                    break;
+                case R.id.review:
+                    Log.e("클릭", "리뷰");
+                    // 회원정보 Activity으로 이동
+                    startReviewActivity();
+                    break;
 
             }
         }
@@ -88,7 +94,7 @@ public class UserMainActivity extends AppCompatActivity {
 
     // 요리 수강 리스트 Activity
     private void startCookingActivity() {
-        Intent intent = new Intent(this, CookingActivity.class);
+        Intent intent = new Intent(this, CookActivity.class);
         startActivity(intent);
     }
 
@@ -107,6 +113,12 @@ public class UserMainActivity extends AppCompatActivity {
     // 로그인 Activity
     private void startProfileActivity() {
         Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+    }
+
+    // 리뷰 Activity
+    private void startReviewActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 

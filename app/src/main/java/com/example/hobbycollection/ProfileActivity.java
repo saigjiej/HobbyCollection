@@ -1,12 +1,10 @@
 package com.example.hobbycollection;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -48,11 +46,49 @@ public class ProfileActivity extends AppCompatActivity {
             startActivity(new Intent(this, LoginAcitvity.class));
         }
         FirebaseUser user = firebaseAuth.getCurrentUser();
-        textViewUserEmail.setText("반갑습니다.\n" + user.getEmail()+ "으로 로그인하였습니다.");
+        textViewUserEmail.setText(user.getEmail()+ "으로 로그인하였습니다.");
         buttonLogout.setOnClickListener(onClickListener);
         back.setOnClickListener(onClickListener);
 
 
+        FirebaseUser users = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (users == null) {
+            myStartActivity(LoginAcitvity.class);
+        } else {
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+            // 로그인 됐을 때 recyclerView 초기화
+            final ArrayList<AddInfo> postList = new ArrayList<>();
+            db.collection("posts")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if(task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                    postList.add(new AddInfo(
+                                            document.getData().get("order").toString(),
+                                            document.getData().get("name").toString(),
+                                            document.getData().get("phoneNumber").toString(),
+                                            document.getData().get("number").toString(),
+                                            document.getData().get("publisher").toString()));
+                                }
+                                RecyclerView recyclerView = findViewById(R.id.recyclerView);
+                                recyclerView.setHasFixedSize(true);
+                                recyclerView.setLayoutManager(new LinearLayoutManager(ProfileActivity.this));
+
+                                RecyclerView.Adapter mAdapter = new PayAdapter(ProfileActivity.this, postList);
+                                recyclerView.setAdapter(mAdapter);
+                            } else {
+                                Log.d(TAG, "Error getting documents : ", task.getException());
+                            }
+                        }
+                    });
+
+
+        }
 
 
     }
@@ -62,7 +98,7 @@ public class ProfileActivity extends AppCompatActivity {
         public void onClick(View view) {
             if(view == buttonLogout) {
                 firebaseAuth.getInstance().signOut();
-                startLoginActivity();
+                myStartActivity(LoginAcitvity.class);
                 finish();
             }
             if(view == back) {
@@ -71,8 +107,9 @@ public class ProfileActivity extends AppCompatActivity {
         }
     };
 
-    private void startLoginActivity() {
-        Intent intent = new Intent(this, LoginAcitvity.class);
+    private void myStartActivity(Class c){
+        Intent intent = new Intent(this, c);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // 앱이 꺼짐
         startActivity(intent);
     }
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".CookingActivity">
+    tools:context=".CraftsActivity">
 
     <!-- 툴바 -->
     <androidx.appcompat.widget.Toolbar
@@ -18,43 +18,237 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="205dp"
-        android:layout_marginTop="80dp"
-        android:text="하고싶은데로 쉽게 만들 수 있는 :)"
+        android:layout_marginTop="78dp"
+        android:layout_marginLeft="230dp"
+        android:text="하고싶은데로 만들 수 있는 :)"
         android:textColor="#000000"
+
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/app_toolbar"
-        app:layout_constraintTop_toTopOf="@+id/app_toolbar">
-    </TextView>
+        app:layout_constraintTop_toTopOf="@+id/app_toolbar" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="340dp"
-        android:layout_marginTop="105dp"
+        android:layout_marginTop="104dp"
+        android:layout_marginLeft="350dp"
         android:text="공예"
         android:textColor="#000000"
-        android:textSize="27sp"
+        android:textSize="25dp"
+
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/app_toolbar"
-        app:layout_constraintTop_toTopOf="@+id/app_toolbar">
-    </TextView>
+        app:layout_constraintTop_toTopOf="@+id/app_toolbar" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycierView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="160dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </androidx.recyclerview.widget.RecyclerView>
+
+    <!-- View 1 -->
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="168dp"
+        android:layout_weight="1"
+
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="@+id/app_toolbar"
+        app:layout_constraintTop_toTopOf="@+id/app_toolbar">
+
+        <ImageView
+            android:id="@+id/crafts1"
+            android:layout_width="wrap_content"
+            android:layout_height="115dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/img_crafts1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="#000000"
+            android:text="원데이"
+            android:textSize="13dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="어린이용 모빌 만들기"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="11dp"
+            android:text="79,000원"
+            android:textColor="#000000"
+            android:textSize="13dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- View 2 -->
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="230dp"
+        android:layout_marginTop="170dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+
+        app:layout_constraintStart_toStartOf="@+id/app_toolbar"
+        app:layout_constraintTop_toTopOf="@+id/app_toolbar">
+
+
+        <ImageView
+            android:id="@+id/crafts2"
+            android:layout_width="wrap_content"
+            android:layout_height="115dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/img_crafts2" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="원데이"
+            android:textColor="#000000"
+            android:textSize="13dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="노끈올 바구니 만들기"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="11dp"
+            android:text="50,000원"
+            android:textColor="#000000"
+            android:textSize="13dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- View 3 -->
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="400dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+
+        app:layout_constraintStart_toStartOf="@+id/app_toolbar"
+        app:layout_constraintTop_toTopOf="@+id/app_toolbar">
+
+
+        <ImageView
+            android:id="@+id/crafts3"
+            android:layout_width="wrap_content"
+            android:layout_height="115dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/img_crafts3" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="원데이"
+            android:textColor="#000000"
+            android:textSize="13dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="천으로 에코백 만들기"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="11dp"
+            android:text="66,000원"
+            android:textColor="#000000"
+            android:textSize="13dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- View 4 -->
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="230dp"
+        android:layout_marginTop="400dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+
+        app:layout_constraintStart_toStartOf="@+id/app_toolbar"
+        app:layout_constraintTop_toTopOf="@+id/app_toolbar">
+
+
+        <ImageView
+            android:id="@+id/crafts4"
+            android:layout_width="wrap_content"
+            android:layout_height="115dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/img_crafts4" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="원데이"
+            android:textColor="#000000"
+            android:textSize="13dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="선물용 캘라그라피 문구"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="11dp"
+            android:text="52,000원"
+            android:textColor="#000000"
+            android:textSize="13dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

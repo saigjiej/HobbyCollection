@@ -11,7 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OrderActivity">
+        <activity android:name=".CraftsListActivity4" />
+        <activity android:name=".CraftsListActivity3" />
+        <activity android:name=".CraftsListActivity2" />
+        <activity android:name=".CraftsListActivity1" />
+        <activity android:name=".ArtListActivity4" />
+        <activity android:name=".ArtListActivity3" />
+        <activity android:name=".ArtListActivity2" />
+        <activity android:name=".CookListActivity4" />
+        <activity android:name=".CookListActivity3" />
+        <activity android:name=".CookListActivity2" />
+        <activity android:name=".ArtListActivity1" />
+        <activity android:name=".CookActivity" />
+        <activity android:name=".CookListActivity1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +33,6 @@
         <activity android:name=".ProfileActivity" />
         <activity android:name=".CraftsActivity" />
         <activity android:name=".ArtActivity" />
-        <activity android:name=".CookingActivity" />
         <activity android:name=".PayActivity" />
         <activity android:name=".LogoActivity">
             <intent-filter>
@@ -33,6 +44,14 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".LoginAcitvity" />
         <activity android:name=".UserMainActivity" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".WritePostActivity" />
     </application>
 
 </manifest>

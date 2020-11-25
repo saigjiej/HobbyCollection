@@ -9,7 +9,10 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -19,10 +22,14 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class PayActivity extends AppCompatActivity {
+public class PayActivity extends AppCompatActivity  {
     // 입력
     private static final String TAG = "PayActivity";
     private FirebaseUser user;
+    private Spinner spinner;
+    private TextView tv_result;
+    private Spinner spinner2;
+    private TextView tv_result2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +53,37 @@ public class PayActivity extends AppCompatActivity {
         // 결재하기 버튼
         findViewById(R.id.pay).setOnClickListener(onClickListener);
 
+        spinner = (Spinner)findViewById(R.id.spinner);
+        tv_result = (TextView)findViewById(R.id.tv_result);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                tv_result.setText(adapterView.getItemAtPosition(i).toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        spinner2 = (Spinner)findViewById(R.id.spinner2);
+        tv_result2 = (TextView)findViewById(R.id.tv_result2);
+
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                tv_result2.setText(adapterView.getItemAtPosition(i).toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -60,15 +98,15 @@ public class PayActivity extends AppCompatActivity {
     };
 
     private void payUpdate() {
-        final String order = ((EditText) findViewById(R.id.et_order)).getText().toString();
+        final String order = ((TextView) findViewById(R.id.tv_result)).getText().toString();
         final String name = ((EditText) findViewById(R.id.et_name)).getText().toString();
         final String phoneNumber = ((EditText) findViewById(R.id.et_phoneNumber)).getText().toString();
-        final String number = ((EditText) findViewById(R.id.et_number)).getText().toString();
+        final String number = ((TextView) findViewById(R.id.tv_result2)).getText().toString();
 
         if(order.length() > 0) {
             user = FirebaseAuth.getInstance().getCurrentUser();
-            PostInfo postInfo = new PostInfo(order, name, phoneNumber, number, user.getUid());
-            uploader(postInfo);
+            AddInfo addInfo = new AddInfo(order, name, phoneNumber, number, user.getUid());
+            uploader(addInfo);
             startToast("정보가 입력되었습니다.");
 
         } else {
@@ -77,9 +115,9 @@ public class PayActivity extends AppCompatActivity {
 
     }
 
-    private void uploader(PostInfo postInfo) {
+    private void uploader(AddInfo addInfo) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("posts").add(postInfo)
+        db.collection("posts").add(addInfo)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {

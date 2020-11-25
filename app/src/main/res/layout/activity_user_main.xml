@@ -92,8 +92,8 @@
         android:id="@+id/user"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="600dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="590dp"
         android:background="@drawable/icon_room1"
         android:textColor="#ffffff"
         android:textSize="20sp"
@@ -102,6 +102,41 @@
         app:layout_constraintStart_toStartOf="@+id/app_toolbar"
         app:layout_constraintTop_toTopOf="@+id/app_toolbar" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="630dp"
+        android:layout_marginLeft="22dp"
+        android:text="회원 페이지"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/app_toolbar"
+        app:layout_constraintTop_toTopOf="@+id/app_toolbar"/>
+
+    <Button
+        android:id="@+id/review"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="590dp"
+        android:background="@drawable/icon_review1"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:textStyle="bold"
+
+        app:layout_constraintStart_toStartOf="@+id/app_toolbar"
+        app:layout_constraintTop_toTopOf="@+id/app_toolbar" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="630dp"
+        android:layout_marginLeft="132dp"
+        android:text="리뷰"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/app_toolbar"
+        app:layout_constraintTop_toTopOf="@+id/app_toolbar"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

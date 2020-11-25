@@ -20,13 +20,17 @@
     <ScrollView
 
         android:id="@+id/ScrollView1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView11"
@@ -42,19 +46,29 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/app_toolbar" />
 
-            <EditText
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:entries="@array/test">
+            </Spinner>
+
+            <TextView
                 android:id="@+id/et_order"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="20dp"
-                android:hint="주문정보"
-                android:inputType="text"
-                android:textColorHint="#868686"
-
-                android:textSize="15dp"
                 app:layout_constraintStart_toStartOf="@+id/app_toolbar"
                 app:layout_constraintTop_toTopOf="@+id/app_toolbar" />
+
+            <TextView
+                android:id="@+id/tv_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:textColor="#000000" />
 
 
             <TextView
@@ -115,31 +129,44 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="30dp"
-                android:text="인원 수"
+                android:text="예약 일자"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/app_toolbar" />
 
-            <EditText
+            <Spinner
+                android:id="@+id/spinner2"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:entries="@array/day">
+            </Spinner>
+
+            <TextView
                 android:id="@+id/et_number"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
-                android:inputType="number"
                 android:textColorHint="#868686"
-                android:textSize="15dp"
                 app:layout_constraintStart_toStartOf="@+id/app_toolbar"
                 app:layout_constraintTop_toTopOf="@+id/app_toolbar" />
+
+            <TextView
+                android:id="@+id/tv_result2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/textView15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="25dp"
                 android:text="결제 금액"
                 android:textColor="#000000"
                 android:textSize="20sp"
@@ -151,31 +178,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="20dp"
-                android:text="총 상품 금액"
-                android:textColor="#000000"
-                android:textSize="15sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
                 android:text="최종 가격"
                 android:textColor="#000000"
                 android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="56,900원"
+                android:textColor="#000000"
+                android:textSize="15sp" />
+
 
             <Button
                 android:id="@+id/pay"
                 android:layout_width="300dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="18dp"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="400dp"
-                android:text="결제"
-                android:textSize="30dp"
+                android:layout_marginTop="22dp"
+                android:background="#000000"
+                android:text="예약"
                 android:textColor="#FFFFFF"
-                android:background="#000000"/>
+                android:textSize="30dp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="400dp" />
 
         </LinearLayout>
     </ScrollView>
@@ -186,12 +215,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="15dp"
-        android:text="결재하기"
+        android:text="예약하기"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/app_toolbar"
         app:layout_constraintTop_toTopOf="@+id/app_toolbar" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,19 +16,19 @@ import java.util.ArrayList;
 
 public class PayAdapter extends RecyclerView.Adapter<PayAdapter.PayViewHolder> {
 
-    private ArrayList<PostInfo> mDataset;
+    private ArrayList<AddInfo> mDataset;
     private Activity activity;
     private FirebaseFirestore firebaseFirestore;
 
-    public static class PayViewHolder extends RecyclerView.ViewHolder {
-        public CardView cardView;
-        public PayViewHolder(Activity activity, CardView v, PostInfo post) {
+    static class PayViewHolder extends RecyclerView.ViewHolder {
+        CardView cardView;
+        PayViewHolder(Activity activity, CardView v, AddInfo post) {
             super(v);
             cardView = v;
         }
     }
 
-    public PayAdapter(Activity activity, ArrayList<PostInfo> myDataset) {
+    public PayAdapter(Activity activity, ArrayList<AddInfo> myDataset) {
         mDataset = myDataset;
         this.activity = activity;
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -56,11 +56,16 @@ public class PayAdapter extends RecyclerView.Adapter<PayAdapter.PayViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull PayAdapter.PayViewHolder holder, int position) {
         CardView cardView = holder.cardView;
-        TextView textView = cardView.findViewById(R.id.textView);
-        textView.setText(mDataset.get(position).getOrder());
-        textView.setText(mDataset.get(position).getName());
-        textView.setText(mDataset.get(position).getPhoneNumber());
-        textView.setText(mDataset.get(position).getNumber());
+        TextView order = cardView.findViewById(R.id.tv_order);
+        order.setText(mDataset.get(position).getOrder());
+        TextView name = cardView.findViewById(R.id.tv_name);
+        name.setText(mDataset.get(position).getName());
+        TextView phoneNumber = cardView.findViewById(R.id.tv_phoneNumber);
+        phoneNumber.setText(mDataset.get(position).getPhoneNumber());
+        TextView number = cardView.findViewById(R.id.tv_number);
+        number.setText(mDataset.get(position).getNumber());
+
+
     }
 
     @Override

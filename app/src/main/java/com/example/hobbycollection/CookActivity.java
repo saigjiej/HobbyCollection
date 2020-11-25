@@ -1,9 +1,7 @@
 package com.example.hobbycollection;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -13,14 +11,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
-
-public class ArtActivity extends AppCompatActivity {
+public class CookActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_art);
-
+        setContentView(R.layout.activity_cook);
 
         //Toolbar를 액티비티의 App Bar로 지정
         setSupportActionBar((Toolbar) findViewById(R.id.app_toolbar));
@@ -39,40 +35,40 @@ public class ArtActivity extends AppCompatActivity {
         //툴바 배경색
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#000000")));
 
-        ImageView art1 = (ImageView) findViewById(R.id.art1);
-        art1.setOnClickListener(new View.OnClickListener() {
+        ImageView cook1 = (ImageView) findViewById(R.id.cook1);
+        cook1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myStartActivity(ArtListActivity1.class);
+                myStartActivity(CookListActivity1.class);
             }
         });
 
-        ImageView art2 = (ImageView) findViewById(R.id.art2);
-        art2.setOnClickListener(new View.OnClickListener() {
+        ImageView cook2 = (ImageView) findViewById(R.id.cook2);
+        cook2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myStartActivity(ArtListActivity2.class);
+                myStartActivity(CookListActivity2.class);
             }
         });
 
-        ImageView art3 = (ImageView) findViewById(R.id.art3);
-        art3.setOnClickListener(new View.OnClickListener() {
+        ImageView cook3 = (ImageView) findViewById(R.id.cook3);
+        cook3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myStartActivity(ArtListActivity3.class);
+                myStartActivity(CookListActivity3.class);
             }
         });
 
-        ImageView art4 = (ImageView) findViewById(R.id.art4);
-        art4.setOnClickListener(new View.OnClickListener() {
+        ImageView cook4 = (ImageView) findViewById(R.id.cook4);
+        cook4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myStartActivity(ArtListActivity4.class);
+                myStartActivity(CookListActivity4.class);
             }
         });
-
 
     }
+
 
     private void myStartActivity(Class c){
         Intent intent = new Intent(this, c);
